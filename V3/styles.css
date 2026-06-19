@@ -927,39 +927,61 @@ body.cursor-hover .cursor-dot {
   transform: translateY(0);
 }
 
-/* ── Selected Clients ── */
+/* ── Selected Clients Marquee ── */
 .clients-section {
   padding: 120px clamp(20px, 4vw, 80px) 60px;
   max-width: 1440px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 30px;
+.clients-marquee-container {
   margin-top: 60px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 48px 0;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Linear infinite scrolling track */
+.clients-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 80px;
+  animation: clients-scroll 25s linear infinite;
+}
+
+/* Pause animation on hover or touch/click focus */
+.clients-marquee-container:hover .clients-marquee-track,
+.clients-marquee-container:active .clients-marquee-track {
+  animation-play-state: paused;
 }
 
 .client-name {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-secondary);
-  text-align: center;
-  padding: 12px;
-  transition: color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-  position: relative;
+  white-space: nowrap;
+  transition: color 0.3s var(--ease-out);
+  cursor: pointer;
 }
 
 .client-name:hover {
   color: var(--fg);
-  transform: translateY(-2px);
+}
+
+@keyframes clients-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Scroll exactly half to create seamless loop */
+  }
 }
 
 }
@@ -1177,7 +1199,6 @@ body.cursor-hover .cursor-dot {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 60px; }
-  .clients-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   
   .products-collage {
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -1234,7 +1255,6 @@ body.cursor-hover .cursor-dot {
   .hero-scroll-indicator { display: none; }
   body { cursor: auto; }
   .cursor-dot, .cursor-ring { display: none; }
-  .clients-grid { grid-template-columns: repeat(2, 1fr); padding: 32px 0; }
 
   /* Scale down inner card padding and text for tablet screens */
   .product-glimpse {
