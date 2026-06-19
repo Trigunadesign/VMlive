@@ -1,304 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VM Live | Premium Retail Design, Fixtures & Deployment</title>
-    <meta
-      name="description"
-      content="VM Live is a premium retail design and turnkey rollout agency. Delivering flagship store experiences, modular display fixtures, and nationwide rollouts."
-    />
-    <!-- Apple typography equivalent: Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body class="apple-theme">
-    <!-- Apple-Style Global Navigation -->
-    <nav class="global-nav" aria-label="Global Header">
-      <div class="nav-container">
-        <a class="nav-brand" href="#home">
-          <img src="assets/brand/vmlive-logo.svg" alt="VM Live Logo" class="brand-logo" />
-        </a>
-        <div class="nav-links">
-          <a href="#work" class="nav-link-item">Work</a>
-          <a href="#services" class="nav-link-item">Services</a>
-          <a href="#about" class="nav-link-item">About</a>
-          <a href="#contact" class="nav-link-item">Contact</a>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VM Live — Crafting Retail Experiences</title>
+  <meta name="description" content="VM Live is a premium retail design agency building flagship store experiences, modular fixtures, and nationwide rollouts for India's leading brands." />
+  <link rel="icon" href="assets/brand/vmlive-logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-line"></div>
+      <span class="preloader-text">VM LIVE</span>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="header-inner">
+      <a href="#hero" class="logo">
+        <img src="assets/brand/vmlive-logo.svg" alt="VM Live" class="logo-svg" />
+      </a>
+      <nav class="main-nav">
+        <a href="#work" class="nav-item" data-index="01">Work</a>
+        <a href="#services" class="nav-item" data-index="02">Services</a>
+        <a href="#about" class="nav-item" data-index="03">About</a>
+        <a href="#contact" class="nav-item" data-index="04">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" id="mobile-nav">
+    <nav class="mobile-nav-inner">
+      <a href="#work" class="mobile-nav-link">Work</a>
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
     </nav>
+  </div>
 
-    <!-- Main Content Area -->
-    <main id="home">
-      
-      <!-- Hero Section 1: MG Motors (Full-Width Dark Banner) -->
-      <section class="hero-row hero-dark" id="mg-motors-hero">
-        <div class="hero-media-bg" style="background-image: url('assets/pptx/selected/image12.png');"></div>
-        <div class="hero-text-overlay">
-          <h2 class="hero-title">MG Motors Showrooms</h2>
-          <p class="hero-subtitle">Complete design, fixture fabrication, and signage for 80+ national showrooms.</p>
-          <div class="hero-ctas">
-            <button class="cta-link open-case-study" data-project="01">Learn more <span class="chevron">&gt;</span></button>
-            <a href="#contact" class="cta-link">Enquire <span class="chevron">&gt;</span></a>
-          </div>
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal-text">
+          <span>Retail Design & Fabrication Studio</span>
         </div>
-      </section>
-
-      <!-- Hero Section 2: Simple Energy (Full-Width Light Banner) -->
-      <section class="hero-row hero-light" id="simple-energy-hero">
-        <div class="hero-media-bg" style="background-image: url('assets/pptx/selected/image83.png');"></div>
-        <div class="hero-text-overlay">
-          <h2 class="hero-title">Simple Energy EV Outlets</h2>
-          <p class="hero-subtitle">Turnkey design and structural layout execution for 15+ EV showrooms.</p>
-          <div class="hero-ctas">
-            <button class="cta-link open-case-study" data-project="03">Learn more <span class="chevron">&gt;</span></button>
-            <a href="#contact" class="cta-link">Enquire <span class="chevron">&gt;</span></a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Hero Section 3: Hewlett Packard (Full-Width Dark Banner) -->
-      <section class="hero-row hero-dark" id="hp-fixtures-hero">
-        <div class="hero-media-bg" style="background-image: url('assets/pptx/fixtures/image15.png');"></div>
-        <div class="hero-text-overlay">
-          <h2 class="hero-title">Hewlett Packard Deploys</h2>
-          <p class="hero-subtitle">Wooden & metal modular displays engineered for 40+ technology showrooms.</p>
-          <div class="hero-ctas">
-            <button class="cta-link open-case-study" data-project="02">Learn more <span class="chevron">&gt;</span></button>
-            <a href="#contact" class="cta-link">Enquire <span class="chevron">&gt;</span></a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2-Column Grid (Apple Bento Grid Style) -->
-      <section class="bento-grid-section" id="work">
-        <div class="bento-container">
-          
-          <!-- Grid Card 1: Suzuki Display Zones -->
-          <div class="bento-card bento-dark" id="suzuki-card">
-            <div class="bento-media" style="background-image: url('assets/pptx/selected/image72.png');"></div>
-            <div class="bento-text">
-              <h3 class="bento-title">Suzuki Display Zones</h3>
-              <p class="bento-desc">Complete wooden display zones in 34+ stores across India.</p>
-              <div class="bento-ctas">
-                <button class="cta-link open-case-study" data-project="04">Learn more <span class="chevron">&gt;</span></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Grid Card 2: Retail Planning -->
-          <div class="bento-card bento-light" id="retail-planning-card">
-            <div class="bento-media" style="background-image: url('assets/pptx/selected/image99.png');"></div>
-            <div class="bento-text">
-              <h3 class="bento-title">Retail Planning</h3>
-              <p class="bento-desc">Spatial zoning and customer flow layouts designed for high-conversions.</p>
-              <div class="bento-ctas">
-                <button class="cta-link open-category" data-cat="Retail Planning">Learn more <span class="chevron">&gt;</span></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Grid Card 3: Precise Joinery -->
-          <div class="bento-card bento-light" id="precise-joinery-card">
-            <div class="bento-media" style="background-image: url('assets/pptx/selected/image18.png');"></div>
-            <div class="bento-text">
-              <h3 class="bento-title">Precise Joinery</h3>
-              <p class="bento-desc">Concealed wood and metal craftsmanship engineered for luxury fixtures.</p>
-              <div class="bento-ctas">
-                <button class="cta-link open-category" data-cat="Precise Joinery">Learn more <span class="chevron">&gt;</span></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Grid Card 4: Identity Systems -->
-          <div class="bento-card bento-dark" id="identity-systems-card">
-            <div class="bento-media" style="background-image: url('assets/pptx/selected/image97.png');"></div>
-            <div class="bento-text">
-              <h3 class="bento-title">Identity Systems</h3>
-              <p class="bento-desc">Translating brand logos into premium 3D signages and storefront facades.</p>
-              <div class="bento-ctas">
-                <button class="cta-link open-category" data-cat="Identity Systems">Learn more <span class="chevron">&gt;</span></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Grid Card 5: Cosmetic Arenas -->
-          <div class="bento-card bento-dark" id="cosmetic-arenas-card">
-            <div class="bento-media" style="background-image: url('assets/pptx/fixtures/image56.png');"></div>
-            <div class="bento-text">
-              <h3 class="bento-title">Cosmetic Arenas</h3>
-              <p class="bento-desc">Bespoke cosmetic displays and tester units with integrated backlighting.</p>
-              <div class="bento-ctas">
-                <button class="cta-link open-category" data-cat="Cosmetic Arenas">Learn more <span class="chevron">&gt;</span></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Grid Card 6: Exhibition Pavilions -->
-          <div class="bento-card bento-light" id="exhibition-pavilions-card">
-            <div class="bento-media" style="background-image: url('assets/pptx/selected/image38.png');"></div>
-            <div class="bento-text">
-              <h3 class="bento-title">Exhibition Pavilions</h3>
-              <p class="bento-desc">Fast-assembly, modular double-decker pavilions for premium expos.</p>
-              <div class="bento-ctas">
-                <button class="cta-link open-category" data-cat="Exhibition Pavilions">Learn more <span class="chevron">&gt;</span></button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Services & Core Capability Section (Clean Typography List) -->
-      <section class="apple-services-section" id="services">
-        <div class="services-container">
-          <h2 class="services-main-title">Full-service retail solutions.<br /><span class="muted-text">Engineered for scale. Deployed pan-India.</span></h2>
-          <div class="services-list-grid">
-            <div class="service-item">
-              <span class="service-num">01</span>
-              <h3 class="service-title">Retail Experience</h3>
-              <p class="service-desc">Complete store fit-outs, shop-in-shops, dealer showrooms, and flagship brand environments built turnkey.</p>
-            </div>
-            <div class="service-item">
-              <span class="service-num">02</span>
-              <h3 class="service-title">Technical Fixtures</h3>
-              <p class="service-desc">Value engineering and production of modular wooden, acrylic, metal, and glass store display fixture systems.</p>
-            </div>
-            <div class="service-item">
-              <span class="service-num">03</span>
-              <h3 class="service-title">Identity & Facades</h3>
-              <p class="service-desc">Commercial signages, 3D building facades, lightboxes, and brand identity deployments across retail networks.</p>
-            </div>
-            <div class="service-item">
-              <span class="service-num">04</span>
-              <h3 class="service-title">Nationwide Rollout</h3>
-              <p class="service-desc">Pan-India prototyping, mass production, freight logistics, local compliance, and regional field installations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About Section / Design Philosophy -->
-      <section class="apple-about-section" id="about">
-        <div class="about-container">
-          <p class="about-lead">
-            We merge an in-house design studio with a 30,000 sq.ft. wood, metal, and acrylic fabrication facility to execute concepts with zero design dilution.
-          </p>
-          <div class="stats-row">
-            <div class="stat-box">
-              <span class="stat-num">30k sq.ft.</span>
-              <span class="stat-label">Production Facility</span>
-            </div>
-            <div class="stat-box">
-              <span class="stat-num">100+</span>
-              <span class="stat-label">Showrooms Deployed</span>
-            </div>
-            <div class="stat-box">
-              <span class="stat-num">Pan India</span>
-              <span class="stat-label">Installation Network</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section (Apple-style Typography Form) -->
-      <section class="apple-contact-section" id="contact">
-        <div class="contact-container">
-          <div class="contact-header">
-            <h2 class="contact-main-title">Let's build something remarkable.</h2>
-            <p class="contact-subtitle">Get in touch with our design and execution teams.</p>
-            
-            <div class="contact-info-grid">
-              <div class="info-block">
-                <h4>General Enquiries</h4>
-                <a href="mailto:hello@vmlive.in" class="email-link">hello@vmlive.in</a>
-              </div>
-              <div class="info-block">
-                <h4>Locations</h4>
-                <p>Gurgaon (Office) | Noida & Delhi (Factories)</p>
-                <p class="muted-info">0124-4594962 | 99999 17060</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-form-block">
-            <form class="apple-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-              <div class="form-row">
-                <input type="text" id="form-name" required placeholder="Name" />
-              </div>
-              <div class="form-row">
-                <input type="email" id="form-email" required placeholder="Email Address" />
-              </div>
-              <div class="form-row">
-                <input type="text" id="form-project" placeholder="Project Scope (e.g. Retail Fit-out)" />
-              </div>
-              <div class="form-row">
-                <textarea id="form-message" rows="4" required placeholder="Tell us about your project..."></textarea>
-              </div>
-              <div class="form-submit-row">
-                <button type="submit" class="apple-btn-primary">Send Enquiry</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Minimal Apple-Style Footer -->
-    <footer class="apple-footer">
-      <div class="footer-container">
-        <div class="footer-top-brand">
-          <img src="assets/brand/vmlive-logo.svg" alt="VM Live Logo" class="footer-logo" />
-        </div>
-        <div class="footer-bottom">
-          <span class="footer-copyright">© 2026 VM Live. Retail Design, Manufacture & Deployment.</span>
-        </div>
+        <h1 class="hero-heading">
+          <span class="line reveal-text"><span>We build spaces</span></span>
+          <span class="line reveal-text"><span>that sell <em>experiences.</em></span></span>
+        </h1>
+        <p class="hero-sub reveal-up">
+          From concept to nationwide rollout — we design, engineer, and install premium retail environments for India's most ambitious brands.
+        </p>
+        <a href="#work" class="hero-cta magnetic-btn reveal-up">
+          <span>Explore Our Work</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
       </div>
-    </footer>
+      <div class="hero-scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
 
-    <!-- Case Study Modal -->
-    <div id="case-study-modal" class="apple-modal-overlay" aria-hidden="true">
-      <div class="apple-modal-container">
-        <button class="apple-modal-close" aria-label="Close">×</button>
-        <div class="apple-modal-content">
-          <div class="apple-modal-media">
-            <img id="modal-img" src="" alt="Project Image" />
-          </div>
-          <div class="apple-modal-info">
-            <span id="modal-num" class="project-num-tag"></span>
-            <h2 id="modal-title" class="modal-title-heading"></h2>
-            <p id="modal-desc" class="modal-desc-paragraph"></p>
-            
-            <div class="apple-details-grid">
-              <div class="apple-detail-item">
-                <strong id="modal-label-1">Client</strong>
-                <span id="modal-client"></span>
-              </div>
-              <div class="apple-detail-item">
-                <strong id="modal-label-2">Scope</strong>
-                <span id="modal-scope"></span>
-              </div>
-              <div class="apple-detail-item">
-                <strong id="modal-label-3">Key Highlights</strong>
-                <span id="modal-highlights"></span>
-              </div>
-              <div class="apple-detail-item">
-                <strong id="modal-label-4">Materials</strong>
-                <span id="modal-materials"></span>
-              </div>
-            </div>
-            
-            <div class="apple-modal-footer">
-              <a href="#contact" class="apple-modal-btn">Enquire About This Project</a>
-            </div>
-          </div>
-        </div>
+    <!-- MARQUEE STRIP -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>Showroom Design</span><span class="dot">●</span>
+        <span>Modular Fixtures</span><span class="dot">●</span>
+        <span>Brand Identity</span><span class="dot">●</span>
+        <span>Nationwide Rollout</span><span class="dot">●</span>
+        <span>Exhibition Stalls</span><span class="dot">●</span>
+        <span>Visual Merchandising</span><span class="dot">●</span>
+        <span>Showroom Design</span><span class="dot">●</span>
+        <span>Modular Fixtures</span><span class="dot">●</span>
+        <span>Brand Identity</span><span class="dot">●</span>
+        <span>Nationwide Rollout</span><span class="dot">●</span>
+        <span>Exhibition Stalls</span><span class="dot">●</span>
+        <span>Visual Merchandising</span><span class="dot">●</span>
       </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- WORK / PORTFOLIO -->
+    <section class="section work-section" id="work">
+      <div class="section-header">
+        <span class="section-label reveal-up">Selected Work</span>
+        <h2 class="section-heading reveal-up">Projects that define <br/><em>our craft.</em></h2>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card reveal-up" data-id="01">
+          <div class="card-img-wrap">
+            <img src="assets/pptx/selected/image12.png" alt="MG Motors" loading="lazy" />
+          </div>
+          <div class="card-info">
+            <span class="card-tag">Automotive Retail</span>
+            <h3>MG Motors — 80+ Showrooms</h3>
+            <p>End-to-end showroom design, signage fabrication, and pan-India deployment.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-id="02">
+          <div class="card-img-wrap">
+            <img src="assets/pptx/selected/image83.png" alt="Simple Energy" loading="lazy" />
+          </div>
+          <div class="card-info">
+            <span class="card-tag">EV Experience</span>
+            <h3>Simple Energy — EV Outlets</h3>
+            <p>Turnkey interiors and futuristic layouts for India's next-gen EV showrooms.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-id="03">
+          <div class="card-img-wrap">
+            <img src="assets/pptx/fixtures/image15.png" alt="Hewlett Packard" loading="lazy" />
+          </div>
+          <div class="card-info">
+            <span class="card-tag">Tech Fixtures</span>
+            <h3>HP — Modular Display Systems</h3>
+            <p>Flat-pack modular fixtures engineered for 40+ retail technology hubs.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-id="04">
+          <div class="card-img-wrap">
+            <img src="assets/pptx/selected/image72.png" alt="Suzuki" loading="lazy" />
+          </div>
+          <div class="card-info">
+            <span class="card-tag">Premium Display</span>
+            <h3>Suzuki — Display Zones</h3>
+            <p>Premium wooden display zones deployed across 34+ multi-brand outlets.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-id="05">
+          <div class="card-img-wrap">
+            <img src="assets/pptx/selected/image97.png" alt="Identity Systems" loading="lazy" />
+          </div>
+          <div class="card-info">
+            <span class="card-tag">Signage & Facades</span>
+            <h3>Identity Systems</h3>
+            <p>3D metal lettering, backlit channels, and storefront ACP claddings.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-id="06">
+          <div class="card-img-wrap">
+            <img src="assets/pptx/selected/image38.png" alt="Exhibition" loading="lazy" />
+          </div>
+          <div class="card-info">
+            <span class="card-tag">Events & Expos</span>
+            <h3>Exhibition Pavilions</h3>
+            <p>Reusable double-decker pavilions built for maximum trade-show impact.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- HORIZONTAL SCROLL GALLERY -->
+    <section class="hscroll-section">
+      <div class="hscroll-track" id="hscroll-track">
+        <div class="hscroll-card"><img src="assets/pptx/selected/image4.png" alt="Project" loading="lazy" /></div>
+        <div class="hscroll-card"><img src="assets/pptx/selected/image30.png" alt="Project" loading="lazy" /></div>
+        <div class="hscroll-card"><img src="assets/pptx/selected/image59.png" alt="Project" loading="lazy" /></div>
+        <div class="hscroll-card"><img src="assets/pptx/selected/image70.png" alt="Project" loading="lazy" /></div>
+        <div class="hscroll-card"><img src="assets/pptx/selected/image82.png" alt="Project" loading="lazy" /></div>
+        <div class="hscroll-card"><img src="assets/pptx/selected/image98.png" alt="Project" loading="lazy" /></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services-section" id="services">
+      <div class="section-header">
+        <span class="section-label reveal-up">What We Do</span>
+        <h2 class="section-heading reveal-up">Full-service. <br/><em>Zero compromise.</em></h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal-up">
+          <span class="service-num">01</span>
+          <h3>Retail Interiors</h3>
+          <p>Complete store fit-outs, shop-in-shops, and flagship brand environments — designed and built turnkey.</p>
+        </div>
+        <div class="service-card reveal-up">
+          <span class="service-num">02</span>
+          <h3>Display Fixtures</h3>
+          <p>Modular wooden, acrylic, metal, and glass fixture systems — value-engineered for scale production.</p>
+        </div>
+        <div class="service-card reveal-up">
+          <span class="service-num">03</span>
+          <h3>Signage & Facades</h3>
+          <p>Backlit LED channels, 3D lettering, ACP claddings, and outdoor-grade brand identity deployments.</p>
+        </div>
+        <div class="service-card reveal-up">
+          <span class="service-num">04</span>
+          <h3>Pan-India Rollout</h3>
+          <p>Prototyping, mass fabrication, flat-pack logistics, regional compliance, and on-ground installation teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / STATS -->
+    <section class="section about-section" id="about">
+      <div class="about-top">
+        <div class="about-text reveal-up">
+          <span class="section-label">About Us</span>
+          <h2 class="section-heading">An in-house design studio <em>fused</em> with a 30,000 sq.ft. fabrication plant.</h2>
+          <p class="about-desc">We don't outsource. From the first sketch to the last screw on-site — every step happens under one roof. That's how we guarantee zero design dilution at any scale.</p>
+        </div>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat-item reveal-up">
+          <span class="stat-number" data-target="30">0</span><span class="stat-suffix">k sq.ft.</span>
+          <span class="stat-label">Production Facility</span>
+        </div>
+        <div class="stat-item reveal-up">
+          <span class="stat-number" data-target="100">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Showrooms Deployed</span>
+        </div>
+        <div class="stat-item reveal-up">
+          <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Brand Partners</span>
+        </div>
+        <div class="stat-item reveal-up">
+          <span class="stat-number" data-target="28">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Cities Covered</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIG QUOTE -->
+    <section class="quote-section">
+      <blockquote class="big-quote reveal-up">
+        <span>"Every showroom is a story. We just make sure it's</span>
+        <em> told beautifully."</em>
+      </blockquote>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact">
+      <div class="section-header">
+        <span class="section-label reveal-up">Get In Touch</span>
+        <h2 class="section-heading reveal-up">Let's build something <br/><em>remarkable.</em></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-left reveal-up">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:hello@vmlive.in" class="contact-val">hello@vmlive.in</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Phone</span>
+            <a href="tel:+918866085698" class="contact-val">+91 88660 85698</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Studio</span>
+            <span class="contact-val">New Delhi, India</span>
+          </div>
+        </div>
+        <form class="contact-form reveal-up" id="contact-form">
+          <div class="form-row">
+            <div class="input-group">
+              <input type="text" id="name" required placeholder=" " />
+              <label for="name">Your Name</label>
+            </div>
+            <div class="input-group">
+              <input type="email" id="email" required placeholder=" " />
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <textarea id="message" rows="4" required placeholder=" "></textarea>
+            <label for="message">Tell us about your project</label>
+          </div>
+          <button type="submit" class="submit-btn magnetic-btn">
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="assets/brand/vmlive-logo.svg" alt="VM Live" class="footer-logo" />
+        <p>&copy; 2026 VM Live. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top magnetic-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
