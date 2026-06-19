@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCursor();
 
   // Cursor hover state
-  const hoverTargets = document.querySelectorAll('a, button, .project-card, .hscroll-card, .service-card, input, textarea');
+  const hoverTargets = document.querySelectorAll('a, button, .project-card, .hscroll-card, .product-card-item, .service-card, input, textarea');
   hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -405,6 +405,116 @@ document.addEventListener('DOMContentLoaded', () => {
       location: "Noida, India",
       scale: "Flagship HQ identity",
       story: "Using premium marine-grade metals and high-efficiency Samsung LEDs, these signs are built to withstand extreme weather. The warm white halo-effect provides a sophisticated, non-glaring night-time identity."
+    },
+    "p01": {
+      title: "Aero Desk — <em>Executive Timber</em>",
+      tag: "Workspace Fit-outs",
+      desc: "Minimalist executive wooden desk designed for workspace suites.",
+      image: "assets/pptx/fixtures/image2.png",
+      client: "VM Live Fixtures",
+      scope: "Premium Executive Furniture",
+      location: "New Delhi, India",
+      scale: "6ft x 3ft standard size",
+      story: "The Aero Desk features a floating timber worktop resting on a slim steel frame. Built using premium walnut veneers and finished with matte clear coat, it integrates hidden wireless chargers and clean cable routing ports for modern office executives."
+    },
+    "p02": {
+      title: "Mono Lounge Chair — <em>Sculptural</em>",
+      tag: "Premium Seating",
+      desc: "Minimalist sculptural lounge chair in premium bouclé fabric.",
+      image: "assets/pptx/fixtures/image5.png",
+      client: "VM Live Seating",
+      scope: "Lobby & Lounge Furniture",
+      location: "Mumbai, India",
+      scale: "Single-seater custom mold",
+      story: "Mono is a design study in simple curves. Formed using a CNC-cut internal plywood structural core, padded with high-resilience foam, and upholstered in premium off-white bouclé fabric. Perfect for modern store lounges and reception spaces."
+    },
+    "p03": {
+      title: "Linear Credenza — <em>Fluted Timber</em>",
+      tag: "Storage Systems",
+      desc: "Sleek, low-profile credenza featuring fluted wood paneling.",
+      image: "assets/pptx/fixtures/image11.png",
+      client: "VM Live Storage",
+      scope: "Retail Display & Storage",
+      location: "Bengaluru, India",
+      scale: "8ft length unit",
+      story: "An architectural storage cabinet designed for flagship showrooms. Features seamless push-to-open fluted timber doors, internal adjustable shelving, and an absolute premium stone top option (Italian marble or terrazzo)."
+    },
+    "p04": {
+      title: "HP Retail Counter — <em>Modular Demo</em>",
+      tag: "Retail Counter",
+      desc: "Standardised modular technology display counter built for dealer networks.",
+      image: "assets/pptx/fixtures/image15.png",
+      client: "Hewlett-Packard India",
+      scope: "Retail Display Fixture",
+      location: "40+ Hubs (Pan-India)",
+      scale: "Modular island unit",
+      story: "Engineered specifically for electronic retail hubs. Built using durable white acrylic solid surface (Corian) combined with internally lit blue LED accents, secure metal locks for demo devices, and easy-access storage drawers."
+    },
+    "p05": {
+      title: "Arc Bar Stool — <em>Commercial Cafe</em>",
+      tag: "Premium Seating",
+      desc: "Sleek metal-frame stool designed for high counters and cafe zones.",
+      image: "assets/pptx/fixtures/image18.png",
+      client: "VM Live Seating",
+      scope: "Cafe & Bar Retail Fit-out",
+      location: "Pune, India",
+      scale: "75cm seat height",
+      story: "Arc combines a powder-coated matte black steel wireframe structure with a molded ash wood saddle seat. The stool is lightweight, highly stackable, and built to survive high-traffic commercial environments."
+    },
+    "p06": {
+      title: "Voxel Sofa — <em>Modular Blocks</em>",
+      tag: "Lounge Fit-outs",
+      desc: "Low-slung modular sofa system with clean geometric blocks.",
+      image: "assets/pptx/fixtures/image21.png",
+      client: "VM Live Lounges",
+      scope: "Experience Center Seating",
+      location: "Hyderabad, India",
+      scale: "Modular 4-piece configuration",
+      story: "Voxel is a fully modular seating solution. Individual blocks can be rearranged to fit showroom lounges or reception layouts. Featuring double-stitched heavy-duty canvas fabric and pocket-spring comfort core."
+    },
+    "p07": {
+      title: "Tension Conference Table — <em>Boardroom</em>",
+      tag: "Workspace Tables",
+      desc: "Long-span boardroom table with structural steel tension rods.",
+      image: "assets/pptx/fixtures/image51.png",
+      client: "Corporate Clients",
+      scope: "Executive Conference Fit-out",
+      location: "Gurugram, India",
+      scale: "12ft x 4ft table",
+      story: "Designed to span 12 feet without center supports, Tension uses a structural steel under-frame with adjustable tension cables. The tabletop is crafted from premium book-matched oak slabs."
+    },
+    "p08": {
+      title: "Fold Shelving — <em>Folded Steel</em>",
+      tag: "Display Shelves",
+      desc: "Architectural steel sheet shelves that look like folded paper.",
+      image: "assets/pptx/fixtures/image52.png",
+      client: "Flagship Retailers",
+      scope: "Merchandising Shelving",
+      location: "Kolkata, India",
+      scale: "6ft height shelving wall",
+      story: "Fold is fabricated using high-precision laser-cut 3mm steel sheets, bent to shape, and powder-coated in a premium sand-textured finish. Provides a super thin profile with high load-bearing capacity for merchandise."
+    },
+    "p09": {
+      title: "Plinth Table — <em>Monolithic Marble</em>",
+      tag: "Lounge Tables",
+      desc: "Solid stone blocks designed as low-profile lounge coffee tables.",
+      image: "assets/pptx/fixtures/image53.png",
+      client: "VM Live Lounges",
+      scope: "Lounge Fit-out Elements",
+      location: "Chennai, India",
+      scale: "3ft x 3ft square block",
+      story: "A monolithic square coffee table made from mitered premium marble slabs. Hand-polished to a silk matte finish, it is a statement piece for flagship brand experience lounges."
+    },
+    "p10": {
+      title: "Cove Armchair — <em>Biophilic Contour</em>",
+      tag: "Premium Seating",
+      desc: "Fully upholstered accent chair with biophilic curved contours.",
+      image: "assets/pptx/fixtures/image56.png",
+      client: "VM Live Seating",
+      scope: "Accent Retail Seating",
+      location: "Ahmedabad, India",
+      scale: "Accent armchair size",
+      story: "Cove features a curved shell that hugs the user. Built using modern hot-molded foam shell tech and upholstered in rich textured wool-blend fabric, it provides high aesthetic value to executive offices."
     }
   };
 
@@ -457,8 +567,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Event Listeners for Project Cards and Horizontal Scroll Cards
-  document.querySelectorAll('.project-card, .hscroll-card').forEach(card => {
+  // Event Listeners for Project Cards, Horizontal Scroll Cards, and Product Collage Cards
+  document.querySelectorAll('.project-card, .hscroll-card, .product-card-item').forEach(card => {
     card.addEventListener('click', () => {
       const id = card.getAttribute('data-id');
       if (id) openModal(id);
