@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCursor();
 
   // Cursor hover state
-  const hoverTargets = document.querySelectorAll('a, button, .project-card, .service-card, input, textarea');
+  const hoverTargets = document.querySelectorAll('a, button, .project-card, .hscroll-card, .service-card, input, textarea');
   hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -260,6 +260,72 @@ document.addEventListener('DOMContentLoaded', () => {
       location: "Pragati Maidan, New Delhi",
       scale: "400+ sq.meter exhibition space",
       story: "Designed and built for major trade exhibitions, these structures are engineered to be modular, structural, and completely reusable. Featuring lounge areas, private meeting rooms on the mezzanine level, and custom-manufactured lighting rigs, they represent the pinnacle of exhibition design."
+    },
+    "h01": {
+      title: "Maruti Suzuki — <em>Arena Showrooms</em>",
+      tag: "Automotive Retail",
+      desc: "Mass rollout of showroom layout fixtures and interior design execution.",
+      image: "assets/pptx/selected/image4.png",
+      client: "Maruti Suzuki India Ltd.",
+      scope: "Showroom Fixtures & Internal Branding",
+      location: "North India (Multiple Cities)",
+      scale: "4,000 sq.ft. average per outlet",
+      story: "For Maruti Suzuki's flagship Arena transformation, VM Live manufactured standard visual merchandising columns, interactive information kiosks, and premium customer lounge tables. The rollout required consistent wood finishes and rapid onsite integration."
+    },
+    "h02": {
+      title: "HP Flagship — <em>Premium Store Fit-out</em>",
+      tag: "Tech Experience",
+      desc: "Exclusive brand store interiors with custom display tables and wall bays.",
+      image: "assets/pptx/selected/image30.png",
+      client: "Hewlett-Packard India",
+      scope: "Turnkey Brand Store Fit-out",
+      location: "Bengaluru, India",
+      scale: "1,200 sq.ft. store size",
+      story: "This flagship store fit-out for HP showcases premium modular display bays, LED-lit glass shelves, and durable solid-surface counter tops. All elements were built in our 30,000 sq.ft. plant and installed in under 5 working days."
+    },
+    "h03": {
+      title: "Cosmetic & VM Kiosks — <em>Modular Units</em>",
+      tag: "Modular Fixtures",
+      desc: "High-finish paint and acrylic cosmetics counters built for mall corridors.",
+      image: "assets/pptx/selected/image59.png",
+      client: "Luxury Cosmetics Brand",
+      scope: "Mall Kiosks & VM Elements",
+      location: "New Delhi & Mumbai",
+      scale: "150 - 300 sq.ft. kiosk units",
+      story: "These high-gloss paint finished kiosks are engineered with embedded LED strip lights, metal trims, and custom locks. Designed for premium mall spaces, they combine secure stock storage with maximum product presentation space."
+    },
+    "h04": {
+      title: "Triumph Motorcycles — <em>Experience Zones</em>",
+      tag: "Automotive Display",
+      desc: "Industrial aesthetic brand displays built for premium superbikes.",
+      image: "assets/pptx/selected/image70.png",
+      client: "Triumph Motorcycles India",
+      scope: "Experience Zones & Shop-in-Shops",
+      location: "Pune & Hyderabad",
+      scale: "Dedicated bike showcase zones",
+      story: "Featuring raw steel elements, textured backdrops, and heavy-duty industrial display tables, this project captures Triumph's heritage. The raised bike podiums are built to sustain vehicle weight while maintaining a clean profile."
+    },
+    "h05": {
+      title: "EV Experience Lounge — <em>Smart Hubs</em>",
+      tag: "EV Experience",
+      desc: "Interactive hubs with lounge seating and digital integration for EV buyers.",
+      image: "assets/pptx/selected/image82.png",
+      client: "Leading EV Startup",
+      scope: "Smart Lounge Interiors & Joinery",
+      location: "Gurugram, India",
+      scale: "1,800 sq.ft. interactive space",
+      story: "A sleek, warm minimalist lounge designed to educate new EV customers. In addition to clean plywood bench seats and plant dividers, we fabricated the wall-mounted interactive displays with hidden cabling."
+    },
+    "h06": {
+      title: "Corporate Identity — <em>Backlit Signages</em>",
+      tag: "Signage & Facades",
+      desc: "Architectural acrylic and metal signage with warm halo-effect LEDs.",
+      image: "assets/pptx/selected/image98.png",
+      client: "Corporate Office Hubs",
+      scope: "Facade Signage & Brand Elements",
+      location: "Noida, India",
+      scale: "Flagship HQ identity",
+      story: "Using premium marine-grade metals and high-efficiency Samsung LEDs, these signs are built to withstand extreme weather. The warm white halo-effect provides a sophisticated, non-glaring night-time identity."
     }
   };
 
@@ -302,8 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Event Listeners for Project Cards
-  document.querySelectorAll('.project-card').forEach(card => {
+  // Event Listeners for Project Cards and Horizontal Scroll Cards
+  document.querySelectorAll('.project-card, .hscroll-card').forEach(card => {
     card.addEventListener('click', () => {
       const id = card.getAttribute('data-id');
       if (id) openModal(id);
