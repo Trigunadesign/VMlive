@@ -1290,21 +1290,15 @@ body.cursor-hover .cursor-dot {
 
 @media (max-width: 480px) {
   .stats-strip { grid-template-columns: 1fr; }
+  /* Let .project-grid and .products-collage maintain their grid layout. 
+     We cap their max-width here to keep the boxes very small on mobile load. */
   .project-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    aspect-ratio: auto;
-  }
-  .project-card {
-    aspect-ratio: 1/1;
+    max-width: 280px;
+    margin: 0 auto;
   }
   .products-collage {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    aspect-ratio: auto;
-  }
-  .product-card-item {
-    aspect-ratio: 1/1;
+    max-width: 280px;
+    margin: 0 auto;
   }
 }
 
