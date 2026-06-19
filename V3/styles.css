@@ -1125,6 +1125,11 @@ body.cursor-hover .cursor-dot {
   
   .products-collage {
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    aspect-ratio: auto;
+  }
+  .product-card-item {
+    aspect-ratio: 1/1;
   }
 }
 
