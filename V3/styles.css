@@ -465,6 +465,8 @@ body.cursor-hover .cursor-dot {
   grid-template-rows: 1fr 1fr;
   gap: 16px;
   aspect-ratio: 3/2;
+  max-width: 960px; /* Reduced by ~30% for a cleaner centered look */
+  margin: 0 auto;
   transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
 }
 
