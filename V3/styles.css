@@ -1131,6 +1131,34 @@ body.cursor-hover .cursor-dot {
   color: #ffffff;
 }
 
+/* Elegant visual helper when a card is touched/active on mobile */
+.product-card-item::after,
+.project-card::after {
+  content: "TAP AGAIN FOR DETAILS";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a19;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.35s var(--ease-out);
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.product-card-item.touched::after,
+.project-card.touched::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .project-grid { 
