@@ -1208,6 +1208,18 @@ body.cursor-hover .cursor-dot {
   .cursor-dot, .cursor-ring { display: none; }
   .clients-grid { grid-template-columns: repeat(2, 1fr); padding: 32px 0; }
 
+  /* Scale down inner card padding and text for tablet screens */
+  .product-glimpse {
+    padding: 20px;
+  }
+  .glimpse-abbr {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 6px;
+  }
+  .glimpse-name {
+    font-size: 11px;
+  }
+
   .project-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -1308,6 +1320,21 @@ body.cursor-hover .cursor-dot {
   .products-collage {
     max-width: 280px;
     margin: 0 auto;
+  }
+  /* Adjust inner card typography & padding for tiny squares on mobile */
+  .product-glimpse {
+    padding: 10px !important;
+  }
+  .glimpse-abbr {
+    font-size: 1.4rem !important;
+    margin-bottom: 2px !important;
+  }
+  .glimpse-name {
+    font-size: 9px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 }
 
