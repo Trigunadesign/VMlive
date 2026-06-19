@@ -969,14 +969,14 @@ body.cursor-hover .cursor-dot {
   grid-template-rows: 0.7fr 1.3fr;
 }
 
-/* Image wrap is invisible by default */
+/* Image wrap is translucent by default (30% opacity) */
 .product-img-wrap {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transform: scale(1.06);
+  opacity: 0.3; /* 30% translucent preview */
+  transform: scale(1.0);
   transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
   z-index: 0;
 }
@@ -991,10 +991,12 @@ body.cursor-hover .cursor-dot {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(26,26,25,0.75) 0%, rgba(26,26,25,0.2) 60%, rgba(26,26,25,0) 100%);
+  background: linear-gradient(to top, rgba(26,26,25,0.7) 0%, rgba(26,26,25,0.2) 60%, rgba(26,26,25,0) 100%);
+  opacity: 0; /* Activated on hover to contrast white text */
+  transition: opacity 0.65s var(--ease-out);
 }
 
-/* Glimpse default view (minimal monochrome text block) */
+/* Glimpse default view has a soft translucent warm white background overlay for high readability */
 .product-glimpse {
   position: absolute;
   inset: 0;
@@ -1002,7 +1004,7 @@ body.cursor-hover .cursor-dot {
   flex-direction: column;
   justify-content: flex-end;
   padding: 40px;
-  background: #fafaf9; /* matching background exactly */
+  background: rgba(250, 250, 249, 0.65); /* 65% translucent overlay */
   transition: background 0.65s var(--ease-out);
   z-index: 1;
 }
@@ -1022,9 +1024,9 @@ body.cursor-hover .cursor-dot {
 .glimpse-name {
   font-family: var(--font-sans);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 750;
   letter-spacing: 0.06em;
-  color: var(--fg-secondary);
+  color: var(--fg); /* high contrast dark text */
   text-transform: uppercase;
   transition: color 0.65s var(--ease-out);
 }
@@ -1043,8 +1045,12 @@ body.cursor-hover .cursor-dot {
 }
 
 .product-card-item:hover .product-img-wrap {
+  opacity: 1; /* 100% full color reveal */
+  transform: scale(1.04);
+}
+
+.product-card-item:hover .product-img-wrap::after {
   opacity: 1;
-  transform: scale(1.0);
 }
 
 .product-card-item:hover .product-glimpse {
@@ -1056,7 +1062,7 @@ body.cursor-hover .cursor-dot {
 }
 
 .product-card-item:hover .glimpse-name {
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
 }
 
 /* ── Responsive ── */
