@@ -111,6 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const hscrollSection = hscrollTrack.closest('.hscroll-section');
 
     window.addEventListener('scroll', () => {
+      // Bypass translation on mobile screens to allow standard touch swiping
+      if (window.innerWidth <= 768) {
+        hscrollTrack.style.transform = '';
+        return;
+      }
       const rect = hscrollSection.getBoundingClientRect();
       const windowH = window.innerHeight;
       const progress = 1 - (rect.bottom / (windowH + rect.height));
