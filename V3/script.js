@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalClose = document.getElementById('modal-close-btn');
   const modalBackdrop = document.getElementById('modal-backdrop');
 
-  function openModal(id) {
+  function openModal(id, pushState = true) {
     const data = projectData[id];
     if (!data) return;
 
@@ -360,12 +360,22 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    // Push new history state so browser/mobile back button closes modal
+    if (pushState) {
+      history.pushState({ modalOpen: true, projectId: id }, '', `#project-${id}`);
+    }
   }
 
-  function closeModal() {
+  function closeModal(shouldGoBack = true) {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+
+    // If manual close (e.g. click X), remove the hash state by going back
+    if (shouldGoBack && window.location.hash.startsWith('#project-')) {
+      history.back();
+    }
   }
 
   // Event Listeners for Project Cards and Horizontal Scroll Cards
@@ -376,13 +386,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  modalClose.addEventListener('click', closeModal);
-  modalBackdrop.addEventListener('click', closeModal);
+  modalClose.addEventListener('click', () => closeModal(true));
+  modalBackdrop.addEventListener('click', () => closeModal(true));
 
   // Esc key closes modal
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
+      closeModal(true);
     }
   });
+
+  // Handle browser back button (Popstate)
+  window.addEventListener('popstate', (e) => {
+    if (modal.classList.contains('active')) {
+      closeModal(false); // Close modal without triggering history.back() again
+    } else if (e.state && e.state.modalOpen) {
+      openModal(e.state.projectId, false);
+    }
+  });
+
+  // Handle direct entry links (e.g. sharing or refreshing with hash)
+  if (window.location.hash.startsWith('#project-')) {
+    const directId = window.location.hash.replace('#project-', '');
+    setTimeout(() => {
+      openModal(directId, false);
+    }, 600);
+  }
 });
