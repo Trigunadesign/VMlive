@@ -1288,7 +1288,16 @@ body.cursor-hover .cursor-dot {
   }
 }
 
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+}
+
 @media (max-width: 480px) {
+  .section {
+    padding: 40px 16px;
+  }
   .stats-strip { grid-template-columns: 1fr; }
   /* Let .project-grid and .products-collage maintain their grid layout. 
      We cap their max-width here to keep the boxes very small on mobile load. */
