@@ -105,33 +105,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── 7. Horizontal Scroll Gallery (scroll-driven & auto-scroll) ──
+  // ── 7. Horizontal Scroll Gallery (Auto-Scroll & Mouse Drag) ──
   const hscrollTrack = document.getElementById('hscroll-track');
   if (hscrollTrack) {
     const hscrollSection = hscrollTrack.closest('.hscroll-section');
 
-    // Desktop parallax scroll translation
-    window.addEventListener('scroll', () => {
-      if (window.innerWidth <= 768) {
-        hscrollTrack.style.transform = '';
-        return;
-      }
-      const rect = hscrollSection.getBoundingClientRect();
-      const windowH = window.innerHeight;
-      const progress = 1 - (rect.bottom / (windowH + rect.height));
-      const clampedProgress = Math.max(0, Math.min(1, progress));
-      const totalScroll = hscrollTrack.scrollWidth - hscrollSection.offsetWidth;
-      hscrollTrack.style.transform = `translateX(-${clampedProgress * totalScroll * 0.6}px)`;
-    });
-
-    // Mobile Auto-Scroll with manual swipe fallback
     let isInteracting = false;
-    let scrollSpeed = 0.5; // Speed of auto scroll
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let scrollSpeed = 0.5; // Auto-scroll speed (pixels per frame)
     let autoScrollId;
     let resumeTimeout;
 
+    // Auto-scroll loop
     function autoScroll() {
-      if (!isInteracting && window.innerWidth <= 768) {
+      if (!isInteracting && !isDown) {
         hscrollSection.scrollLeft += scrollSpeed;
         
         // Loop back to start if reached the end
@@ -148,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resumeAutoScroll() {
-      // Resume auto scroll after 2.5 seconds of user inactivity
       clearTimeout(resumeTimeout);
       resumeTimeout = setTimeout(() => {
         isInteracting = false;
@@ -160,9 +148,38 @@ document.addEventListener('DOMContentLoaded', () => {
     hscrollSection.addEventListener('touchmove', pauseAutoScroll, { passive: true });
     hscrollSection.addEventListener('touchend', resumeAutoScroll, { passive: true });
 
-    // Mouse event listeners for desktop drag testing
-    hscrollSection.addEventListener('mousedown', pauseAutoScroll);
-    hscrollSection.addEventListener('mouseup', resumeAutoScroll);
+    // Mouse drag event listeners for desktop drag testing
+    hscrollSection.addEventListener('mousedown', (e) => {
+      isDown = true;
+      pauseAutoScroll();
+      hscrollSection.classList.add('active-drag');
+      startX = e.pageX - hscrollSection.offsetLeft;
+      scrollLeft = hscrollSection.scrollLeft;
+    });
+
+    hscrollSection.addEventListener('mouseleave', () => {
+      if (isDown) {
+        isDown = false;
+        hscrollSection.classList.remove('active-drag');
+        resumeAutoScroll();
+      }
+    });
+
+    hscrollSection.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        hscrollSection.classList.remove('active-drag');
+        resumeAutoScroll();
+      }
+    });
+
+    hscrollSection.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - hscrollSection.offsetLeft;
+      const walk = (x - startX) * 1.5; // Drag speed multiplier
+      hscrollSection.scrollLeft = scrollLeft - walk;
+    });
 
     // Initialize auto scroll loop
     autoScroll();
