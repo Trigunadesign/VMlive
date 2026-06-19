@@ -1287,36 +1287,36 @@ body.cursor-hover .cursor-dot {
     transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
   }
 
-  /* Column stretching for 3 columns on mobile */
+  /* Column stretching for 3 columns on mobile (15% larger active card) */
   .products-collage:has(.product-card-item:nth-child(3n+1):hover),
   .products-collage:has(.product-card-item:nth-child(3n+1).touched) {
-    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    grid-template-columns: 1.6fr 0.7fr 0.7fr;
   }
   .products-collage:has(.product-card-item:nth-child(3n+2):hover),
   .products-collage:has(.product-card-item:nth-child(3n+2).touched) {
-    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+    grid-template-columns: 0.7fr 1.6fr 0.7fr;
   }
   .products-collage:has(.product-card-item:nth-child(3n+3):hover),
   .products-collage:has(.product-card-item:nth-child(3n+3).touched) {
-    grid-template-columns: 0.8fr 0.8fr 1.4fr;
+    grid-template-columns: 0.7fr 0.7fr 1.6fr;
   }
 
-  /* Row stretching for 4 rows on mobile */
+  /* Row stretching for 4 rows on mobile (15% larger active row) */
   .products-collage:has(.product-card-item:nth-child(-n+3):hover),
   .products-collage:has(.product-card-item:nth-child(-n+3).touched) {
-    grid-template-rows: 1.3fr 0.9fr 0.9fr 0.9fr;
+    grid-template-rows: 1.5fr 0.83fr 0.83fr 0.83fr;
   }
   .products-collage:has(.product-card-item:nth-child(n+4):nth-child(-n+6):hover),
   .products-collage:has(.product-card-item:nth-child(n+4):nth-child(-n+6).touched) {
-    grid-template-rows: 0.9fr 1.3fr 0.9fr 0.9fr;
+    grid-template-rows: 0.83fr 1.5fr 0.83fr 0.83fr;
   }
   .products-collage:has(.product-card-item:nth-child(n+7):nth-child(-n+9):hover),
   .products-collage:has(.product-card-item:nth-child(n+7):nth-child(-n+9).touched) {
-    grid-template-rows: 0.9fr 0.9fr 1.3fr 0.9fr;
+    grid-template-rows: 0.83fr 0.83fr 1.5fr 0.83fr;
   }
   .products-collage:has(.product-card-item:nth-child(n+10):hover),
   .products-collage:has(.product-card-item:nth-child(n+10).touched) {
-    grid-template-rows: 0.9fr 0.9fr 0.9fr 1.3fr;
+    grid-template-rows: 0.83fr 0.83fr 0.83fr 1.5fr;
   }
 
   .hscroll-track {
