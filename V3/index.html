@@ -318,6 +318,54 @@
     </div>
   </footer>
 
+  <!-- Project Modal -->
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content-wrapper">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Project">
+        <span>Close</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-scroll-container">
+        <div class="modal-body">
+          <div class="modal-hero-img">
+            <img id="modal-img" src="" alt="Project Image" />
+          </div>
+          <div class="modal-info-grid">
+            <div class="modal-info-left">
+              <span class="modal-tag" id="modal-tag">Tag</span>
+              <h2 class="modal-title" id="modal-title">Project Title</h2>
+              <p class="modal-desc" id="modal-desc">Project Description goes here.</p>
+              
+              <div class="modal-story">
+                <h3>The Challenge & Solution</h3>
+                <p id="modal-story-text">Detailed story about the project...</p>
+              </div>
+            </div>
+            <div class="modal-info-right">
+              <div class="meta-item">
+                <span class="meta-label">Client</span>
+                <span class="meta-val" id="modal-client">-</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Scope</span>
+                <span class="meta-val" id="modal-scope">-</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Location</span>
+                <span class="meta-val" id="modal-location">-</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Scale</span>
+                <span class="meta-val" id="modal-scale">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
