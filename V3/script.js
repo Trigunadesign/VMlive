@@ -105,13 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── 7. Horizontal Scroll Gallery (scroll-driven) ──
+  // ── 7. Horizontal Scroll Gallery (scroll-driven & auto-scroll) ──
   const hscrollTrack = document.getElementById('hscroll-track');
   if (hscrollTrack) {
     const hscrollSection = hscrollTrack.closest('.hscroll-section');
 
+    // Desktop parallax scroll translation
     window.addEventListener('scroll', () => {
-      // Bypass translation on mobile screens to allow standard touch swiping
       if (window.innerWidth <= 768) {
         hscrollTrack.style.transform = '';
         return;
@@ -123,6 +123,49 @@ document.addEventListener('DOMContentLoaded', () => {
       const totalScroll = hscrollTrack.scrollWidth - hscrollSection.offsetWidth;
       hscrollTrack.style.transform = `translateX(-${clampedProgress * totalScroll * 0.6}px)`;
     });
+
+    // Mobile Auto-Scroll with manual swipe fallback
+    let isInteracting = false;
+    let scrollSpeed = 0.5; // Speed of auto scroll
+    let autoScrollId;
+    let resumeTimeout;
+
+    function autoScroll() {
+      if (!isInteracting && window.innerWidth <= 768) {
+        hscrollSection.scrollLeft += scrollSpeed;
+        
+        // Loop back to start if reached the end
+        if (hscrollSection.scrollLeft >= (hscrollSection.scrollWidth - hscrollSection.clientWidth - 2)) {
+          hscrollSection.scrollLeft = 1;
+        }
+      }
+      autoScrollId = requestAnimationFrame(autoScroll);
+    }
+
+    function pauseAutoScroll() {
+      isInteracting = true;
+      clearTimeout(resumeTimeout);
+    }
+
+    function resumeAutoScroll() {
+      // Resume auto scroll after 2.5 seconds of user inactivity
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isInteracting = false;
+      }, 2500);
+    }
+
+    // Touch event listeners for mobile swipe interaction
+    hscrollSection.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+    hscrollSection.addEventListener('touchmove', pauseAutoScroll, { passive: true });
+    hscrollSection.addEventListener('touchend', resumeAutoScroll, { passive: true });
+
+    // Mouse event listeners for desktop drag testing
+    hscrollSection.addEventListener('mousedown', pauseAutoScroll);
+    hscrollSection.addEventListener('mouseup', resumeAutoScroll);
+
+    // Initialize auto scroll loop
+    autoScroll();
   }
 
   // ── 8. Stats Counter Animation ──
