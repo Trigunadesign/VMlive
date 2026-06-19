@@ -105,22 +105,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── 7. Horizontal Scroll Gallery (Auto-Scroll & Mouse Drag) ──
+  // ── 7. Horizontal Scroll Gallery (Scroll-Driven & Drag & Auto-Scroll) ──
   const hscrollTrack = document.getElementById('hscroll-track');
   if (hscrollTrack) {
     const hscrollSection = hscrollTrack.closest('.hscroll-section');
 
-    let isInteracting = false;
-    let isDown = false;
+    let isInteracting = false; // For mobile touch swipe activity
+    let isDown = false;        // For desktop mouse drag activity
     let startX;
     let scrollLeft;
-    let scrollSpeed = 0.5; // Auto-scroll speed (pixels per frame)
+    let scrollSpeed = 0.5;     // Auto-scroll speed (only active on mobile)
     let autoScrollId;
     let resumeTimeout;
 
-    // Auto-scroll loop
+    // Desktop/Laptop Page Scroll-Driven Horizontal Translation
+    window.addEventListener('scroll', () => {
+      // If mobile or user is actively dragging/swiping, do not override
+      if (window.innerWidth <= 768 || isDown || isInteracting) return;
+
+      const rect = hscrollSection.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      const progress = 1 - (rect.bottom / (windowH + rect.height));
+      const clampedProgress = Math.max(0, Math.min(1, progress));
+      const totalScroll = hscrollSection.scrollWidth - hscrollSection.clientWidth;
+
+      hscrollSection.scrollLeft = clampedProgress * totalScroll;
+    });
+
+    // Mobile Auto-scroll loop (runs when no interaction is taking place)
     function autoScroll() {
-      if (!isInteracting && !isDown) {
+      if (!isInteracting && window.innerWidth <= 768) {
         hscrollSection.scrollLeft += scrollSpeed;
         
         // Loop back to start if reached the end
@@ -177,11 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - hscrollSection.offsetLeft;
-      const walk = (x - startX) * 1.5; // Drag speed multiplier
+      const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
       hscrollSection.scrollLeft = scrollLeft - walk;
     });
 
-    // Initialize auto scroll loop
+    // Initialize auto scroll loop for mobile
     autoScroll();
   }
 
