@@ -912,11 +912,14 @@ body.cursor-hover .cursor-dot {
 
 .products-collage {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 16px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 80px);
+  aspect-ratio: 5/2;
+  transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
 }
 
 .product-card-item {
@@ -924,10 +927,46 @@ body.cursor-hover .cursor-dot {
   border-radius: var(--radius);
   overflow: hidden;
   background: #f0efed;
-  transition: transform 0.6s var(--ease-out), opacity 0.6s var(--ease-out), filter 0.6s var(--ease-out);
+  transition: opacity 0.65s var(--ease-out), filter 0.65s var(--ease-out);
   cursor: pointer;
   border: 1px solid var(--border);
-  aspect-ratio: 1/1; /* Force perfect square size */
+  height: 100%;
+  width: 100%;
+}
+
+/* Column Stretching */
+.products-collage:has(.product-card-item:nth-child(1):hover),
+.products-collage:has(.product-card-item:nth-child(6):hover) {
+  grid-template-columns: 1.48fr 0.88fr 0.88fr 0.88fr 0.88fr;
+}
+
+.products-collage:has(.product-card-item:nth-child(2):hover),
+.products-collage:has(.product-card-item:nth-child(7):hover) {
+  grid-template-columns: 0.88fr 1.48fr 0.88fr 0.88fr 0.88fr;
+}
+
+.products-collage:has(.product-card-item:nth-child(3):hover),
+.products-collage:has(.product-card-item:nth-child(8):hover) {
+  grid-template-columns: 0.88fr 0.88fr 1.48fr 0.88fr 0.88fr;
+}
+
+.products-collage:has(.product-card-item:nth-child(4):hover),
+.products-collage:has(.product-card-item:nth-child(9):hover) {
+  grid-template-columns: 0.88fr 0.88fr 0.88fr 1.48fr 0.88fr;
+}
+
+.products-collage:has(.product-card-item:nth-child(5):hover),
+.products-collage:has(.product-card-item:nth-child(10):hover) {
+  grid-template-columns: 0.88fr 0.88fr 0.88fr 0.88fr 1.48fr;
+}
+
+/* Row Stretching */
+.products-collage:has(.product-card-item:nth-child(-n+5):hover) {
+  grid-template-rows: 1.3fr 0.7fr;
+}
+
+.products-collage:has(.product-card-item:nth-child(n+6):hover) {
+  grid-template-rows: 0.7fr 1.3fr;
 }
 
 /* Image wrap is invisible by default */
@@ -938,7 +977,7 @@ body.cursor-hover .cursor-dot {
   height: 100%;
   opacity: 0;
   transform: scale(1.06);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
   z-index: 0;
 }
 
@@ -964,7 +1003,7 @@ body.cursor-hover .cursor-dot {
   justify-content: flex-end;
   padding: 40px;
   background: #fafaf9; /* matching background exactly */
-  transition: background 0.6s var(--ease-out);
+  transition: background 0.65s var(--ease-out);
   z-index: 1;
 }
 
@@ -977,7 +1016,7 @@ body.cursor-hover .cursor-dot {
   color: var(--fg);
   line-height: 0.9;
   margin-bottom: 12px;
-  transition: color 0.6s var(--ease-out);
+  transition: color 0.65s var(--ease-out);
 }
 
 .glimpse-name {
@@ -987,19 +1026,17 @@ body.cursor-hover .cursor-dot {
   letter-spacing: 0.06em;
   color: var(--fg-secondary);
   text-transform: uppercase;
-  transition: color 0.6s var(--ease-out);
+  transition: color 0.65s var(--ease-out);
 }
 
-/* Hover collage interactions */
+/* Hover collage interactions (scale other items down slightly) */
 .products-collage:hover .product-card-item:not(:hover) {
-  transform: scale(0.95);
   opacity: 0.45;
   filter: grayscale(0.2);
 }
 
 /* Hovered Card State */
 .product-card-item:hover {
-  transform: scale(1.03);
   z-index: 5;
   box-shadow: 0 30px 60px rgba(26,26,25,0.12);
   border-color: transparent;
