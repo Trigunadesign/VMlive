@@ -1312,25 +1312,27 @@ body.cursor-hover .cursor-dot {
   }
   .stats-strip { grid-template-columns: 1fr; }
   /* Let .project-grid and .products-collage maintain their grid layout. 
-     We cap their max-width here to keep the boxes very small on mobile load. */
+     Increase max-width to fill the screen width elegantly without leaving huge blank sides. */
   .project-grid {
-    max-width: 280px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
   }
   .products-collage {
-    max-width: 280px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
   }
-  /* Adjust inner card typography & padding for tiny squares on mobile */
+  /* Adjust inner card typography & padding for squares on mobile */
   .product-glimpse {
-    padding: 10px !important;
+    padding: 12px !important;
   }
   .glimpse-abbr {
-    font-size: 1.4rem !important;
-    margin-bottom: 2px !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 4px !important;
   }
   .glimpse-name {
-    font-size: 9px !important;
+    font-size: 10px !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
