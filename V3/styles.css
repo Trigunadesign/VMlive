@@ -913,8 +913,8 @@ body.cursor-hover .cursor-dot {
 .products-collage {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 280px;
-  gap: 20px;
+  grid-auto-rows: 250px;
+  gap: 16px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 80px);
@@ -924,90 +924,109 @@ body.cursor-hover .cursor-dot {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--bg-alt);
+  background: #f0efed;
   transition: transform 0.6s var(--ease-out), opacity 0.6s var(--ease-out), filter 0.6s var(--ease-out);
   cursor: pointer;
+  border: 1px solid var(--border);
 }
 
 /* Beautiful collage grid spans */
-.product-card-item:nth-child(1) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
+.product-card-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.product-card-item:nth-child(4) { grid-column: span 2; }
+.product-card-item:nth-child(6) { grid-row: span 2; }
+.product-card-item:nth-child(7) { grid-column: span 2; }
+.product-card-item:nth-child(10) { grid-column: span 2; }
 
-.product-card-item:nth-child(4) {
-  grid-column: span 2;
-}
-
-.product-card-item:nth-child(6) {
-  grid-row: span 2;
-}
-
-.product-card-item:nth-child(7) {
-  grid-column: span 2;
-}
-
-.product-card-item:nth-child(10) {
-  grid-column: span 2;
-}
-
+/* Image wrap is invisible by default */
 .product-img-wrap {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  position: relative;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  z-index: 0;
 }
 
 .product-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s var(--ease-out);
 }
 
-.product-card-item:hover img {
-  transform: scale(1.05);
-}
-
-.product-overlay {
+.product-img-wrap::after {
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(26,26,25,0.7) 0%, rgba(26,26,25,0.15) 60%, rgba(26,26,25,0) 100%);
+  background: linear-gradient(to top, rgba(26,26,25,0.75) 0%, rgba(26,26,25,0.2) 60%, rgba(26,26,25,0) 100%);
+}
+
+/* Glimpse default view (minimal monochrome text block) */
+.product-glimpse {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 30px;
-  opacity: 0.95;
-  transition: opacity 0.4s var(--ease-out);
+  padding: 40px;
+  background: #fafaf9; /* matching background exactly */
+  transition: background 0.6s var(--ease-out);
+  z-index: 1;
 }
 
-.product-cat {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(250,250,249,0.7);
-  margin-bottom: 8px;
-}
-
-.product-overlay h3 {
+/* Massive abbreviation */
+.glimpse-abbr {
   font-family: var(--font-sans);
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--bg);
-  letter-spacing: -0.01em;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  color: var(--fg);
+  line-height: 0.9;
+  margin-bottom: 12px;
+  transition: color 0.6s var(--ease-out);
+}
+
+.glimpse-name {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--fg-secondary);
+  text-transform: uppercase;
+  transition: color 0.6s var(--ease-out);
 }
 
 /* Hover collage interactions */
 .products-collage:hover .product-card-item:not(:hover) {
-  transform: scale(0.96);
-  opacity: 0.55;
-  filter: grayscale(0.15);
+  transform: scale(0.95);
+  opacity: 0.45;
+  filter: grayscale(0.2);
 }
 
+/* Hovered Card State */
 .product-card-item:hover {
-  transform: scale(1.025);
+  transform: scale(1.03);
   z-index: 5;
   box-shadow: 0 30px 60px rgba(26,26,25,0.12);
+  border-color: transparent;
+}
+
+.product-card-item:hover .product-img-wrap {
+  opacity: 1;
+  transform: scale(1.0);
+}
+
+.product-card-item:hover .product-glimpse {
+  background: transparent;
+}
+
+.product-card-item:hover .glimpse-abbr {
+  color: #ffffff;
+}
+
+.product-card-item:hover .glimpse-name {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* ── Responsive ── */
