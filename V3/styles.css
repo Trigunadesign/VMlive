@@ -484,26 +484,34 @@ body.cursor-hover .cursor-dot {
 
 /* Project Column Stretching */
 .project-grid:has(.project-card:nth-child(1):hover),
-.project-grid:has(.project-card:nth-child(4):hover) {
+.project-grid:has(.project-card:nth-child(1).touched),
+.project-grid:has(.project-card:nth-child(4):hover),
+.project-grid:has(.project-card:nth-child(4).touched) {
   grid-template-columns: 1.4fr 0.8fr 0.8fr;
 }
 
 .project-grid:has(.project-card:nth-child(2):hover),
-.project-grid:has(.project-card:nth-child(5):hover) {
+.project-grid:has(.project-card:nth-child(2).touched),
+.project-grid:has(.project-card:nth-child(5):hover),
+.project-grid:has(.project-card:nth-child(5).touched) {
   grid-template-columns: 0.8fr 1.4fr 0.8fr;
 }
 
 .project-grid:has(.project-card:nth-child(3):hover),
-.project-grid:has(.project-card:nth-child(6):hover) {
+.project-grid:has(.project-card:nth-child(3).touched),
+.project-grid:has(.project-card:nth-child(6):hover),
+.project-grid:has(.project-card:nth-child(6).touched) {
   grid-template-columns: 0.8fr 0.8fr 1.4fr;
 }
 
 /* Project Row Stretching */
-.project-grid:has(.project-card:nth-child(-n+3):hover) {
+.project-grid:has(.project-card:nth-child(-n+3):hover),
+.project-grid:has(.project-card:nth-child(-n+3).touched) {
   grid-template-rows: 1.3fr 0.7fr;
 }
 
-.project-grid:has(.project-card:nth-child(n+4):hover) {
+.project-grid:has(.project-card:nth-child(n+4):hover),
+.project-grid:has(.project-card:nth-child(n+4).touched) {
   grid-template-rows: 0.7fr 1.3fr;
 }
 
@@ -534,35 +542,42 @@ body.cursor-hover .cursor-dot {
 }
 
 /* Project Grid Hover Interactions */
-.project-grid:hover .project-card:not(:hover) {
+.project-grid:hover .project-card:not(:hover),
+.project-grid:has(.project-card.touched) .project-card:not(.touched) {
   opacity: 0.45;
   filter: grayscale(0.2);
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card.touched {
   z-index: 5;
   box-shadow: 0 30px 60px rgba(26,26,25,0.12);
   border-color: transparent;
 }
 
-.project-card:hover .card-img-wrap {
+.project-card:hover .card-img-wrap,
+.project-card.touched .card-img-wrap {
   opacity: 1;
   transform: scale(1.04);
 }
 
-.project-card:hover .card-img-wrap::after {
+.project-card:hover .card-img-wrap::after,
+.project-card.touched .card-img-wrap::after {
   opacity: 1;
 }
 
-.project-card:hover .product-glimpse {
+.project-card:hover .product-glimpse,
+.project-card.touched .product-glimpse {
   background: transparent;
 }
 
-.project-card:hover .glimpse-abbr {
+.project-card:hover .glimpse-abbr,
+.project-card.touched .glimpse-abbr {
   color: #ffffff;
 }
 
-.project-card:hover .glimpse-name {
+.project-card:hover .glimpse-name,
+.project-card.touched .glimpse-name {
   color: #ffffff;
 }
 
@@ -1076,47 +1091,60 @@ body.cursor-hover .cursor-dot {
 }
 
 /* Hover collage interactions (scale other items down slightly) */
-.products-collage:hover .product-card-item:not(:hover) {
+.products-collage:hover .product-card-item:not(:hover),
+.products-collage:has(.product-card-item.touched) .product-card-item:not(.touched) {
   opacity: 0.45;
   filter: grayscale(0.2);
 }
 
 /* Hovered Card State */
-.product-card-item:hover {
+.product-card-item:hover,
+.product-card-item.touched {
   z-index: 5;
   box-shadow: 0 30px 60px rgba(26,26,25,0.12);
   border-color: transparent;
 }
 
-.product-card-item:hover .product-img-wrap {
+.product-card-item:hover .product-img-wrap,
+.product-card-item.touched .product-img-wrap {
   opacity: 1; /* 100% full color reveal */
   transform: scale(1.04);
 }
 
-.product-card-item:hover .product-img-wrap::after {
+.product-card-item:hover .product-img-wrap::after,
+.product-card-item.touched .product-img-wrap::after {
   opacity: 1;
 }
 
-.product-card-item:hover .product-glimpse {
+.product-card-item:hover .product-glimpse,
+.product-card-item.touched .product-glimpse {
   background: transparent;
 }
 
-.product-card-item:hover .glimpse-abbr {
+.product-card-item:hover .glimpse-abbr,
+.product-card-item.touched .glimpse-abbr {
   color: #ffffff;
 }
 
-.product-card-item:hover .glimpse-name {
+.product-card-item:hover .glimpse-name,
+.product-card-item.touched .glimpse-name {
   color: #ffffff;
 }
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .project-grid { 
-    grid-template-columns: repeat(2, 1fr); 
-    aspect-ratio: auto;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 3/2;
+    max-width: 700px;
+    margin: 0 auto;
+    transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
   }
   .project-card {
-    aspect-ratio: 1/1;
+    aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
   }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
@@ -1124,12 +1152,47 @@ body.cursor-hover .cursor-dot {
   .clients-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   
   .products-collage {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    aspect-ratio: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    aspect-ratio: 4/3;
+    transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
   }
   .product-card-item {
-    aspect-ratio: 1/1;
+    aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Column stretching for 4 columns on tablet */
+  .products-collage:has(.product-card-item:nth-child(4n+1):hover),
+  .products-collage:has(.product-card-item:nth-child(4n+1).touched) {
+    grid-template-columns: 1.45fr 0.85fr 0.85fr 0.85fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(4n+2):hover),
+  .products-collage:has(.product-card-item:nth-child(4n+2).touched) {
+    grid-template-columns: 0.85fr 1.45fr 0.85fr 0.85fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(4n+3):hover),
+  .products-collage:has(.product-card-item:nth-child(4n+3).touched) {
+    grid-template-columns: 0.85fr 0.85fr 1.45fr 0.85fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(4n+4):hover),
+  .products-collage:has(.product-card-item:nth-child(4n+4).touched) {
+    grid-template-columns: 0.85fr 0.85fr 0.85fr 1.45fr;
+  }
+
+  /* Row stretching for 3 rows on tablet */
+  .products-collage:has(.product-card-item:nth-child(-n+4):hover),
+  .products-collage:has(.product-card-item:nth-child(-n+4).touched) {
+    grid-template-rows: 1.3fr 0.85fr 0.85fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(n+5):nth-child(-n+8):hover),
+  .products-collage:has(.product-card-item:nth-child(n+5):nth-child(-n+8).touched) {
+    grid-template-rows: 0.85fr 1.3fr 0.85fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(n+9):hover),
+  .products-collage:has(.product-card-item:nth-child(n+9).touched) {
+    grid-template-rows: 0.85fr 0.85fr 1.3fr;
   }
 }
 
@@ -1146,11 +1209,74 @@ body.cursor-hover .cursor-dot {
   .clients-grid { grid-template-columns: repeat(2, 1fr); padding: 32px 0; }
 
   .project-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    aspect-ratio: 2/3;
+    max-width: 480px;
+    transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
+  }
+
+  /* 2-column project grid resizers for mobile */
+  .project-grid:has(.project-card:nth-child(2n+1):hover),
+  .project-grid:has(.project-card:nth-child(2n+1).touched) {
+    grid-template-columns: 1.35fr 0.65fr;
+  }
+  .project-grid:has(.project-card:nth-child(2n+2):hover),
+  .project-grid:has(.project-card:nth-child(2n+2).touched) {
+    grid-template-columns: 0.65fr 1.35fr;
+  }
+  
+  /* 3-row project grid row resizers */
+  .project-grid:has(.project-card:nth-child(-n+2):hover),
+  .project-grid:has(.project-card:nth-child(-n+2).touched) {
+    grid-template-rows: 1.3fr 0.85fr 0.85fr;
+  }
+  .project-grid:has(.project-card:nth-child(n+3):nth-child(-n+4):hover),
+  .project-grid:has(.project-card:nth-child(n+3):nth-child(-n+4).touched) {
+    grid-template-rows: 0.85fr 1.3fr 0.85fr;
+  }
+  .project-grid:has(.project-card:nth-child(n+5):hover),
+  .project-grid:has(.project-card:nth-child(n+5).touched) {
+    grid-template-rows: 0.85fr 0.85fr 1.3fr;
   }
 
   .products-collage {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    aspect-ratio: 3/4;
+    transition: grid-template-columns 0.65s var(--ease-out), grid-template-rows 0.65s var(--ease-out);
+  }
+
+  /* Column stretching for 3 columns on mobile */
+  .products-collage:has(.product-card-item:nth-child(3n+1):hover),
+  .products-collage:has(.product-card-item:nth-child(3n+1).touched) {
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(3n+2):hover),
+  .products-collage:has(.product-card-item:nth-child(3n+2).touched) {
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(3n+3):hover),
+  .products-collage:has(.product-card-item:nth-child(3n+3).touched) {
+    grid-template-columns: 0.8fr 0.8fr 1.4fr;
+  }
+
+  /* Row stretching for 4 rows on mobile */
+  .products-collage:has(.product-card-item:nth-child(-n+3):hover),
+  .products-collage:has(.product-card-item:nth-child(-n+3).touched) {
+    grid-template-rows: 1.3fr 0.9fr 0.9fr 0.9fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(n+4):nth-child(-n+6):hover),
+  .products-collage:has(.product-card-item:nth-child(n+4):nth-child(-n+6).touched) {
+    grid-template-rows: 0.9fr 1.3fr 0.9fr 0.9fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(n+7):nth-child(-n+9):hover),
+  .products-collage:has(.product-card-item:nth-child(n+7):nth-child(-n+9).touched) {
+    grid-template-rows: 0.9fr 0.9fr 1.3fr 0.9fr;
+  }
+  .products-collage:has(.product-card-item:nth-child(n+10):hover),
+  .products-collage:has(.product-card-item:nth-child(n+10).touched) {
+    grid-template-rows: 0.9fr 0.9fr 0.9fr 1.3fr;
   }
 
   .hscroll-track {
@@ -1166,9 +1292,19 @@ body.cursor-hover .cursor-dot {
   .stats-strip { grid-template-columns: 1fr; }
   .project-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    aspect-ratio: auto;
+  }
+  .project-card {
+    aspect-ratio: 1/1;
   }
   .products-collage {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    aspect-ratio: auto;
+  }
+  .product-card-item {
+    aspect-ratio: 1/1;
   }
 }
 

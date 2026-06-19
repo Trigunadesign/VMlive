@@ -569,10 +569,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Event Listeners for Project Cards, Horizontal Scroll Cards, and Product Collage Cards
   document.querySelectorAll('.project-card, .hscroll-card, .product-card-item').forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      // Touch/Mobile screen sizing (<= 1024px)
+      if (window.innerWidth <= 1024 && !card.classList.contains('hscroll-card')) {
+        // If this specific card is NOT already highlighted (touched)
+        if (!card.classList.contains('touched')) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // Remove highlight from all other cards in the same grid/collage
+          const container = card.closest('.project-grid, .products-collage');
+          if (container) {
+            container.querySelectorAll('.project-card, .product-card-item').forEach(el => {
+              el.classList.remove('touched');
+            });
+          }
+
+          // Highlight the tapped card
+          card.classList.add('touched');
+          return; // Interrupt click and do not open modal
+        }
+      }
+
+      // If already highlighted, or desktop size, or scroll gallery card: open the modal
       const id = card.getAttribute('data-id');
-      if (id) openModal(id);
+      if (id) {
+        card.classList.remove('touched'); // Reset touched state
+        openModal(id);
+      }
     });
+  });
+
+  // Tap outside elements resets highlighted state
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.project-card, .product-card-item')) {
+      document.querySelectorAll('.project-card, .product-card-item').forEach(card => {
+        card.classList.remove('touched');
+      });
+    }
   });
 
   modalClose.addEventListener('click', () => closeModal(true));
